@@ -8,6 +8,7 @@ public class MoveBandit : MonoBehaviour
     public int velocidad_bullet;
     void Start()
     {
+        //isAlive = true;
         //Debug.Log(type);
     }
 
@@ -15,6 +16,10 @@ public class MoveBandit : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * velocidad_bullet);
+        //if (this.gameObject.GetComponent<Animation>().IsPlaying("BanditWalk"))
+        //{
+        //}
+
     }
 
 }

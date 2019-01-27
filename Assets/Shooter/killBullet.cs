@@ -19,7 +19,8 @@ public class killBullet : MonoBehaviour
     {
         if (col.gameObject.CompareTag("BanditTag"))
         {
-            Destroy(col.gameObject);
+            col.gameObject.GetComponent<Animator>().Play("BanditDie");
+            Destroy(col.gameObject, 1.5f);
             doShooting.killsCont++;
         }
         else if (col.gameObject.name == "Ground" || col.gameObject.name.Contains("roman_floor"))

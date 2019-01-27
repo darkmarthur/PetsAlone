@@ -1,6 +1,6 @@
 WebGL
 PlayerPath?
-C:/Users/mario/Desktop/PetsAloneBuildProd
+C:/Users/mario/Documents/PetsLegion/WEBGL_BUILD
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?
