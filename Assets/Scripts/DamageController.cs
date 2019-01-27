@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class DamageController : MonoBehaviour
     public GameObject masterDamage;
     public int maxLife;
     private int cont = 0;
+    private bool stillCounting = true;
 
     void Start()
     {
@@ -22,10 +24,16 @@ public class DamageController : MonoBehaviour
     {
         if (cont >= maxLife)
         {
-            damageCounterLabel.text = "Pets Unsafe ｡ﾟ(TヮT)ﾟ｡";
+            stillCounting = false;
+            damageCounterLabel.text = "Pets Unsafe ｡ﾟ(TヮT)ﾟ｡        PRESS 1 TO RESTART";
             Destroy(masterBandit);
             Destroy(masterShooter);
-            Destroy(masterDamage);
+            //Destroy(masterDamage);
+            if (Input.GetKeyDown("1"))
+            {
+                doShooting.killsCont = 0;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
         else
         {
@@ -34,8 +42,8 @@ public class DamageController : MonoBehaviour
     }
 
     public void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.CompareTag("BanditTag"))
+    { 
+        if (col.gameObject.CompareTag("BanditTag") && stillCounting)
         {
             Destroy(col.gameObject);
             cont++;
